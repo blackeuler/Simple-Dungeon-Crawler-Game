@@ -30,7 +30,7 @@ public class GameMethods {
         + "\nAnything can go wrong here."
         + "\nIf you are brave enough to begin, please enter your team name.\n");
     String teamName = scan.nextLine();
-    System.out.println("\nGood luck, " + teamName + "." + RESET);
+    System.out.println("\nGood luck, Team " + teamName + "." + RESET);
   }
 
   /**
@@ -111,7 +111,9 @@ public class GameMethods {
   **/
   public static void combatRun(Character char1, Character char2, Character char3, Monster monst1) {
     // Establishes parameters for loop runtime.
-    boolean charsAlive = true;
+    boolean char1Alive = true;
+    boolean char2Alive = true;
+    boolean char3Alive = true;
     boolean monstAlive = true;
     int roundCount = 1;
 
@@ -131,7 +133,7 @@ public class GameMethods {
     int newHealth = 0;
 
     // Loop for fight 1. TODONE: Finish loop implementation.
-    while (charsAlive == true && monstAlive == true) {
+    while ((char1Alive == true || char2Alive == true || char3Alive == true) && monstAlive == true) {
       // turn 1 belongs to char1, 2 to char2 and so on.
       while (turn == 1 && char1.getHp() > 0) {
         choice = Utilities.actionPrompt(char1.getName());
@@ -284,17 +286,26 @@ public class GameMethods {
       System.out.println();
       GameMethods.encounterInfo(monst1);
 
-      if (char1.getHp() <= 0 && char2.getHp() <= 0 && char3.getHp() <= 0) {
-        charsAlive = false;
-        System.out.println(WHITE + "Your party has been defeated!" + RESET);
+      if (char1.getHp() <= 0 || char2.getHp() <= 0 || char3.getHp() <= 0) {
+        if (char1.getHp() <= 0) {
+          turn = 2;
+          char1Alive = false;
+        } else if (char2.getHp() <= 0) {
+          turn = 3;
+          char2Alive = false;
+        } else if (char3.getHp() <= 0) {
+          char3Alive = false;
+        } else if (char1.getHp() <= 0 && char2.getHp() <= 0 && char3.getHp() <= 0) {
+          System.out.println(WHITE + "Your party has been defeated!" + RESET);
+        }
       } else if (monst1.getHp() <= 0) {
         monstAlive = false;
-        System.out.println(WHITE + "\nWell done!" + monst1.getName() + " defeated!" + RESET);
+        System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
       } else {
         System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+        turn = 1;
       }
       roundCount++;
-      turn = 1;
     }
   }
 }

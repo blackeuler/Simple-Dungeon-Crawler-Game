@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import game.Actions;
 import game.Character;
-import game.CharacterModels;
 import game.Monster;
 import game.RunningRounds;
 import game.Utilities;
