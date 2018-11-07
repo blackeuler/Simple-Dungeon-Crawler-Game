@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="game.TestGame" tests="10" skipped="0" failures="0" errors="0" timestamp="2018-11-07T19:43:08" hostname="aldenv106" time="0.012">
+<testsuite name="game.TestGame" tests="10" skipped="0" failures="0" errors="0" timestamp="2018-11-07T21:26:35" hostname="aldenv106" time="0.011">
   <properties/>
-  <testcase name="testCharacterAttackRoll" classname="game.TestGame" time="0.007"/>
-  <testcase name="testMonsterAttackRoll" classname="game.TestGame" time="0.003"/>
-  <testcase name="testHpSetterCharacter" classname="game.TestGame" time="0.0"/>
-  <testcase name="testHpSetterMonster" classname="game.TestGame" time="0.001"/>
+  <testcase name="testMonsterAttackRoll" classname="game.TestGame" time="0.006"/>
+  <testcase name="testHpSetterCharacter" classname="game.TestGame" time="0.003"/>
+  <testcase name="testHpSetterMonster" classname="game.TestGame" time="0.0"/>
   <testcase name="testCharacterHealMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testMonsterHealMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testCharacterDealDamageMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testMonsterDealDamageMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testCharacterGetMagicMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testMonsterGetMagicMethod" classname="game.TestGame" time="0.0"/>
+  <testcase name="testCharacterAttackRoll" classname="game.TestGame" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

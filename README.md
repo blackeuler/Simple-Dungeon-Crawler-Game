@@ -3,7 +3,7 @@
 This repository contains Java source code that runs a simple dungeon game in
 the command-line. As the name states, the game is fairly straightforward. You
 start off with 3 unique characters randomly chosen from a list of 10 possible
-characters. Then, you enter the dungeon and fight! Each fight, you are given
+characters. Then, you enter the dungeon and fight`!!!`Each fight, you are given
 options to either 1.) attack 2.) defend or 3.) heal a designated ally. There
 are a total of 4 opponents. Stay alive as long as possible to beat the final
 raid boss to win the game!
