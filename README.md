@@ -21,7 +21,7 @@ In order to run the program, you will need the following apps to be in your disp
 
 You can run the program using the following the commands:
 
-* `gradle build`: create the bytecode from the Java source code
+* `gradle build`: create the bytecode from the Java source code and runs the test cases
 * `gradle run`: run the Java program in the command-line
 * `gradle -q --console plain run`: run the Java program in the command-line
   while silencing all the unnecessary outputs
