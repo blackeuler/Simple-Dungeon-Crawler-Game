@@ -8,7 +8,6 @@ import java.util.Scanner;
  * of the main method.
  **/
 public class GameMethods {
-
   // Colors for dynamic and fun output.
   public static final String RESET = "\033[0m";  // Text Reset
   public static final String RED = "\033[0;31m";     // RED
@@ -90,11 +89,11 @@ public class GameMethods {
     System.out.println("You look over and see Funky Kong in a cage." + RESET);
     Utilities.enterPrompt();
   }
+
   /**
    * Method that collects data from Monster object
    * And returns it to be read by the player.
    **/
-
   public static void encounterInfo(Monster monster) {
     System.out.println(WHITE + "You will be fighting " + GREEN +  monster.getName() + WHITE + ".");
     System.out.println();
