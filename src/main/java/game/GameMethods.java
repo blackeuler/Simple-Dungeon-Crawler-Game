@@ -132,7 +132,7 @@ public class GameMethods {
     int newHealth = 0;
 
     // Loop for fight 1. TODONE: Finish loop implementation.
-    while ((char1Alive == true || char2Alive == true || char3Alive == true) && monstAlive == true) {
+    while (char1Alive == true && char2Alive == true && char3Alive == true && monstAlive == true) {
       // turn 1 belongs to char1, 2 to char2 and so on.
       while (turn == 1 && char1.getHp() > 0) {
         choice = Utilities.actionPrompt(char1.getName());
@@ -151,7 +151,7 @@ public class GameMethods {
         } else if (choice == 3) {
           // This should allow for healing.
           healing = Actions.heal(char1.getMag());
-          healChoice = Utilities.targetPrompt(char3.getName());
+          healChoice = Utilities.targetPrompt(char1.getName());
           if (healChoice == 1) {
             Actions.healTarget(char1, healing);
             System.out.println(WHITE + "\nHealed "
