@@ -15,7 +15,7 @@ repositories {
 }
 
 // specify the use of gradle version 4.1
-task Wrapper(type: Wrapper) {
+task wrapper(type: Wrapper) {
   gradleVersion = '4.1'
 }
 

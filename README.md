@@ -8,7 +8,8 @@ options to either 1.) attack 2.) defend or 3.) heal a designated ally. There
 are a total of 4 opponents. Stay alive as long as possible to beat the final
 raid boss to win the game!
 
-## Sample output of the game:
+## Sample output of the game
+
 ![Sample Output of the Game](https://github.com/huangs1/Simple-Dungeon-Game/blob/master/SampleOutput.png)
 
 ## Requirements
