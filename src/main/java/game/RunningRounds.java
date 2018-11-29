@@ -40,6 +40,10 @@ public class RunningRounds {
     final Character char1 = characters[rand.nextInt(3)];
     final Character char2 = characters[rand.nextInt(3) + 3];
     final Character char3 = characters[rand.nextInt(3) + 6];
+    final boolean char1Alive = true;
+    final boolean char2Alive = true;
+    final boolean char3Alive = true;
+
 
     // Tells player their party and stats.
     System.out.println();
@@ -50,17 +54,16 @@ public class RunningRounds {
     Utilities.characterInfo(char3);
 
     // Monsters are constructed, could be done the same as characters?
-    Monster monst1 = new Monster("Gnome Bandits", 210, 10, 10, 10);
-    Monster monst2 = new Monster("Gnome Village", 420, 5, 0, 0);
-    Monster monst3 = new Monster("Gnome Horde", 350, 15, 20, 10);
-    Monster finalBoss = new Monster("Boss Kapfhammer", 1000, 20, 20, 20);
+    Monster monst1 = new Monster("Gnome Bandits", 110, 10, 10, 10);
+    Monster monst2 = new Monster("Gnome Village", 185, 5, 0, 0);
+    Monster monst3 = new Monster("Gnome Horde", 250, 10, 20, 10);
+    Monster finalBoss = new Monster("Boss Kapfhammer", 350, 15, 20, 20);
 
     // Sets up narrative using input name and characters.
     // Actions.startGame needs to be fixed otherwise name value is lost.
     GameMethods.encounterOne();
     // Displays monster info.
     GameMethods.encounterInfo(monst1);
-
     GameMethods.combatRun(char1, char2, char3, monst1);
     GameMethods.encounterTwo();
     GameMethods.encounterInfo(monst2);

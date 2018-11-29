@@ -132,179 +132,905 @@ public class GameMethods {
     int newHealth = 0;
 
     // Loop for fight 1. TODONE: Finish loop implementation.
-    while (char1Alive == true && char2Alive == true && char3Alive == true && monstAlive == true) {
-      // turn 1 belongs to char1, 2 to char2 and so on.
-      while (turn == 1 && char1.getHp() > 0) {
-        choice = Utilities.actionPrompt(char1.getName());
-        if (choice == 1) {
-          // Rolls damage and subtracts it from monster health - defense.
-          damage = Actions.attack(char1.getAtk());
-          newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
-          System.out.println(WHITE + "\nDid " + RED + damage + WHITE + " damage!\n" + RESET);
-          monst1.setHp(newHealth);
-          turn++;
-        } else if (choice == 2) {
-          // TODONE: Replace with new, better defend method.
-          char1Defense = char1.getDef();
-          System.out.println(WHITE + char3.getName() + " is defending!");
-          turn++;
-        } else if (choice == 3) {
-          // This should allow for healing.
-          healing = Actions.heal(char1.getMag());
-          healChoice = Utilities.targetPrompt(char1.getName());
-          if (healChoice == 1) {
-            Actions.healTarget(char1, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char1.getName() + " for " + healing + " points!\n" + RESET);
-          } else if (healChoice == 2) {
-            Actions.healTarget(char2, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char2.getName() + " for " + healing + " points!\n" + RESET);
-          } else if (healChoice == 3) {
-            Actions.healTarget(char3, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char3.getName() + " for " + healing + " points!\n" + RESET);
+    while ((char1Alive == true || char2Alive == true || char3Alive == true) && monstAlive == true) {
+      if (char1Alive == true && char2Alive == true && char3Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          choice = Utilities.actionPrompt(char1.getName());
+          if (choice == 1) {
+            // Rolls damage and subtracts it from monster health - defense.
+            damage = Actions.attack(char1.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + RED + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            // TODONE: Replace with new, better defend method.
+            char1Defense = char1.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            // This should allow for healing.
+            healing = Actions.heal(char1.getMag());
+            healChoice = Utilities.targetPrompt(char1.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
           }
-          turn++;
-        } else {
-          System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
         }
-      }
 
-      while (turn == 2 && char2.getHp() > 0) {
-        choice = Utilities.actionPrompt(char2.getName());
-        if (choice == 1) {
-          damage = Actions.attack(char2.getAtk());
-          newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
-          System.out.println(WHITE + "\nDid " + BLUE + damage + WHITE + " damage!\n" + RESET);
-          monst1.setHp(newHealth);
-          turn++;
-        } else if (choice == 2) {
-          char2Defense = char2.getDef();
-          System.out.println(WHITE + char3.getName() + " is defending!");
-          turn++;
-        } else if (choice == 3) {
-          healing = Actions.heal(char3.getMag());
-          healChoice = Utilities.targetPrompt(char2.getName());
-          if (healChoice == 1) {
-            Actions.healTarget(char1, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char1.getName() + " for " + healing + " points!\n" + RESET);
-          } else if (healChoice == 2) {
-            Actions.healTarget(char2, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char2.getName() + " for " + healing + " points!\n" + RESET);
-          } else if (healChoice == 3) {
-            Actions.healTarget(char3, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char3.getName() + " for " + healing + " points!\n" + RESET);
+        while (turn == 2 && char2.getHp() > 0) {
+          choice = Utilities.actionPrompt(char2.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char2.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + BLUE + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char2Defense = char2.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char2.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
           }
-          turn++;
-        } else {
-          System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
         }
-      }
 
-      while (turn == 3 && char3.getHp() > 0) {
-        choice = Utilities.actionPrompt(char3.getName());
-        if (choice == 1) {
-          damage = Actions.attack(char3.getAtk());
-          newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
-          System.out.println(WHITE + "\nDid " + YELLOW + damage + WHITE + " damage!\n" + RESET);
-          monst1.setHp(newHealth);
-          turn++;
-        } else if (choice == 2) {
-          char3Defense = char3.getDef();
-          System.out.println(WHITE + char3.getName() + " is defending!");
-          turn++;
-        } else if (choice == 3) {
-          healing = Actions.heal(char3.getMag());
-          healChoice = Utilities.targetPrompt(char3.getName());
-          if (healChoice == 1) {
-            Actions.healTarget(char1, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char1.getName() + " for " + healing + " points!\n" + RESET);
-          } else if (healChoice == 2) {
-            Actions.healTarget(char2, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char2.getName() + " for " + healing + " points!\n" + RESET);
-          } else if (healChoice == 3) {
-            Actions.healTarget(char3, healing);
-            System.out.println(WHITE + "\nHealed "
-                + char3.getName() + " for " + healing + " points!\n" + RESET);
+        while (turn == 3 && char3.getHp() > 0) {
+          choice = Utilities.actionPrompt(char3.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char3.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + YELLOW + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char3Defense = char3.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char3.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
           }
-          turn++;
-        } else {
-          System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
         }
-      }
 
-      while (turn == 4 && monst1.getHp() > 0) {
+        while (turn == 4 && monst1.getHp() > 0) {
 
-        if (monst1.getHp() > (monst1.getHp() / 2)) {
-          monsterDamage = Actions.attack(monst1.getAtk());
-          char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
-          char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
-          char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
-          turn++;
-        } else if (monst1.getHp() <= 0) {
-          System.out.println();
-          System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
-          turn++;
-        } else {
-          int aiChoice = Utilities.randomRoll();
-          if (aiChoice == 0) {
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
             monsterDamage = Actions.attack(monst1.getAtk());
             char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
             char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
             char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
-            System.out.println();
-            System.out.println(WHITE + monst1.getName() + " dealt "
-                + GREEN + monsterDamage + WHITE + " to the party!\n" + RESET);
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
             turn++;
-          } else if (aiChoice == 1) {
-            monst1Defense = monst1.getDef();
+          } else if (monst1.getHp() <= 0) {
             System.out.println();
-            System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
             turn++;
-          } else if (aiChoice == 2) {
-            healing = Actions.heal(monst1.getMag());
-            Actions.healTargetM(monst1, healing);
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+              char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+              char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+        if (char1.getHp() <= 0 || char2.getHp() <= 0 || char3.getHp() <= 0) {
+          if (char1.getHp() <= 0) {
+            char1Alive = false;
+          } else if (char2.getHp() <= 0) {
+            char2Alive = false;
+          } else if (char3.getHp() <= 0) {
+            char3Alive = false;
+          } else if (char1.getHp() <= 0 && char2.getHp() <= 0 && char3.getHp() <= 0) {
+            System.out.println(WHITE + "Your party has been defeated!" + RESET);
+          }
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
+      } else if (char1Alive == true && char2Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          choice = Utilities.actionPrompt(char1.getName());
+          if (choice == 1) {
+            // Rolls damage and subtracts it from monster health - defense.
+            damage = Actions.attack(char1.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + RED + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            // TODONE: Replace with new, better defend method.
+            char1Defense = char1.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            // This should allow for healing.
+            healing = Actions.heal(char1.getMag());
+            healChoice = Utilities.targetPrompt(char1.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              System.out.println("No can do! " + char3.getName() + " already fainted!");
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 2 && char2.getHp() > 0) {
+          choice = Utilities.actionPrompt(char2.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char2.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + BLUE + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char2Defense = char2.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char2.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              System.out.println("No can do! " + char3.getName() + " already fainted!");
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 3 && char3.getHp() > 0) {
+          System.out.println(char3.getName() + " has no more strength!");
+          turn++;
+        }
+
+        while (turn == 4 && monst1.getHp() > 0) {
+
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
+            monsterDamage = Actions.attack(monst1.getAtk());
+            char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+            char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+            turn++;
+          } else if (monst1.getHp() <= 0) {
             System.out.println();
-            System.out.println(WHITE + monst1.getName() + " healed for "
-                + healing + " points!\n" + RESET);
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
+            turn++;
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+              char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+        if (char1.getHp() <= 0 || char2.getHp() <= 0) {
+          if (char1.getHp() <= 0) {
+            char1Alive = false;
+          } else if (char2.getHp() <= 0) {
+            char2Alive = false;
+          } else if (char1.getHp() <= 0 && char2.getHp() <= 0) {
+            System.out.println(WHITE + "Your party has been defeated!" + RESET);
+          }
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
+      } else if (char1Alive == true && char3Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          choice = Utilities.actionPrompt(char1.getName());
+          if (choice == 1) {
+            // Rolls damage and subtracts it from monster health - defense.
+            damage = Actions.attack(char1.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + RED + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            // TODONE: Replace with new, better defend method.
+            char1Defense = char1.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            // This should allow for healing.
+            healing = Actions.heal(char1.getMag());
+            healChoice = Utilities.targetPrompt(char1.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 2 && char2.getHp() > 0) {
+          System.out.println(char2.getName() + " has fainted already!");
+          turn++;
+        }
+
+        while (turn == 3 && char3.getHp() > 0) {
+          choice = Utilities.actionPrompt(char3.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char3.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + YELLOW + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char3Defense = char3.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char3.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 4 && monst1.getHp() > 0) {
+
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
+            monsterDamage = Actions.attack(monst1.getAtk());
+            char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+            char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+            turn++;
+          } else if (monst1.getHp() <= 0) {
+            System.out.println();
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
+            turn++;
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+              char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+        if (char1.getHp() <= 0 || char3.getHp() <= 0) {
+          if (char1.getHp() <= 0) {
+            char1Alive = false;
+          } else if (char3.getHp() <= 0) {
+            char3Alive = false;
+          } else if (char1.getHp() <= 0 && char3.getHp() <= 0) {
+            System.out.println(WHITE + "Your party has been defeated!" + RESET);
+          }
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
+      } else if (char2Alive == true && char3Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          choice = Utilities.actionPrompt(char1.getName());
+          if (choice == 1) {
+            System.out.println(char1.getName() + " has fainted already! ");
             turn++;
           }
         }
-      }
-      System.out.println(WHITE + "Here's how your party is doing: \n");
-      Utilities.characterInfo(char1);
-      Utilities.characterInfo(char2);
-      Utilities.characterInfo(char3);
-      System.out.println("\nHere's how your enemy is doing: \n");
-      System.out.println();
-      GameMethods.encounterInfo(monst1);
 
-      if (char1.getHp() <= 0 || char2.getHp() <= 0 || char3.getHp() <= 0) {
-        if (char1.getHp() <= 0) {
-          turn = 2;
-          char1Alive = false;
-        } else if (char2.getHp() <= 0) {
-          turn = 3;
-          char2Alive = false;
-        } else if (char3.getHp() <= 0) {
-          char3Alive = false;
-        } else if (char1.getHp() <= 0 && char2.getHp() <= 0 && char3.getHp() <= 0) {
-          System.out.println(WHITE + "Your party has been defeated!" + RESET);
+        while (turn == 2 && char2.getHp() > 0) {
+          choice = Utilities.actionPrompt(char2.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char2.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + BLUE + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char2Defense = char2.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char2.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
         }
-      } else if (monst1.getHp() <= 0) {
-        monstAlive = false;
-        System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
-      } else {
-        System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
-        turn = 1;
+
+        while (turn == 3 && char3.getHp() > 0) {
+          choice = Utilities.actionPrompt(char3.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char3.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + YELLOW + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char3Defense = char3.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char3.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 4 && monst1.getHp() > 0) {
+
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
+            monsterDamage = Actions.attack(monst1.getAtk());
+            char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+            char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+            turn++;
+          } else if (monst1.getHp() <= 0) {
+            System.out.println();
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
+            turn++;
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+              char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+        if (char1.getHp() <= 0 || char2.getHp() <= 0 || char3.getHp() <= 0) {
+          if (char2.getHp() <= 0) {
+            char2Alive = false;
+          } else if (char3.getHp() <= 0) {
+            char3Alive = false;
+          } else if (char2.getHp() <= 0 && char3.getHp() <= 0) {
+            System.out.println(WHITE + "Your party has been defeated!" + RESET);
+          }
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
+      } else if (char1Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          choice = Utilities.actionPrompt(char1.getName());
+          if (choice == 1) {
+            // Rolls damage and subtracts it from monster health - defense.
+            damage = Actions.attack(char1.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + RED + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            // TODONE: Replace with new, better defend method.
+            char1Defense = char1.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            // This should allow for healing.
+            healing = Actions.heal(char1.getMag());
+            healChoice = Utilities.targetPrompt(char1.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 2 && char2.getHp() > 0) {
+          System.out.println(char2.getName() + " has fainted already!");
+          turn++;
+        }
+
+        while (turn == 3 && char3.getHp() > 0) {
+          System.out.println(char3.getName() + " has fainted already!");
+          turn++;
+        }
+
+        while (turn == 4 && monst1.getHp() > 0) {
+
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
+            monsterDamage = Actions.attack(monst1.getAtk());
+            char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+            turn++;
+          } else if (monst1.getHp() <= 0) {
+            System.out.println();
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
+            turn++;
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char1.setHp(Actions.dealDamage(monsterDamage, char1.getHp(), char1Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+        if (char1.getHp() <= 0) {
+          System.out.println(WHITE + "Your party has been defeated!" + RESET);
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
+      } else if (char2Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          System.out.println(char1.getName() + " has fainted already! ");
+          turn++;
+
+        }
+
+        while (turn == 2 && char2.getHp() > 0) {
+          choice = Utilities.actionPrompt(char2.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char2.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + BLUE + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char2Defense = char2.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char2.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 3 && char3.getHp() > 0) {
+          System.out.println(char3.getName() + " has fainted already!");
+          turn++;
+        }
+
+        while (turn == 4 && monst1.getHp() > 0) {
+
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
+            monsterDamage = Actions.attack(monst1.getAtk());
+            char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+            turn++;
+          } else if (monst1.getHp() <= 0) {
+            System.out.println();
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
+            turn++;
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char2.setHp(Actions.dealDamage(monsterDamage, char2.getHp(), char2Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+
+        if (char2.getHp() <= 0) {
+          char2Alive = false;
+          System.out.println(WHITE + "Your party has been defeated!" + RESET);
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
+      } else if (char3Alive == true && monstAlive == true) {
+        // turn 1 belongs to char1, 2 to char2 and so on.
+        while (turn == 1 && char1.getHp() > 0) {
+          System.out.println(char1.getName() + " has fainted already!");
+          turn++;
+        }
+
+        while (turn == 2 && char2.getHp() > 0) {
+          System.out.println(char2.getName() + " has fainted already!");
+          turn++;
+        }
+
+        while (turn == 3 && char3.getHp() > 0) {
+          choice = Utilities.actionPrompt(char3.getName());
+          if (choice == 1) {
+            damage = Actions.attack(char3.getAtk());
+            newHealth = Actions.dealDamage(damage, monst1.getHp(), monst1Defense);
+            System.out.println(WHITE + "\nDid " + YELLOW + damage + WHITE + " damage!\n" + RESET);
+            monst1.setHp(newHealth);
+            turn++;
+          } else if (choice == 2) {
+            char3Defense = char3.getDef();
+            System.out.println(WHITE + char3.getName() + " is defending!");
+            turn++;
+          } else if (choice == 3) {
+            healing = Actions.heal(char3.getMag());
+            healChoice = Utilities.targetPrompt(char3.getName());
+            if (healChoice == 1) {
+              Actions.healTarget(char1, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char1.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 2) {
+              Actions.healTarget(char2, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char2.getName() + " for " + healing + " points!\n" + RESET);
+            } else if (healChoice == 3) {
+              Actions.healTarget(char3, healing);
+              System.out.println(WHITE + "\nHealed "
+                  + char3.getName() + " for " + healing + " points!\n" + RESET);
+            }
+            turn++;
+          } else {
+            System.out.println(PURPLE + "Invalid entry...please choose again!" + RESET);
+          }
+        }
+
+        while (turn == 4 && monst1.getHp() > 0) {
+
+          if (monst1.getHp() > (monst1.getHp() / 2)) {
+            monsterDamage = Actions.attack(monst1.getAtk());
+            char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+            System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+            turn++;
+          } else if (monst1.getHp() <= 0) {
+            System.out.println();
+            System.out.println(GREEN + monst1.getName() + " has no more strength!\n" + RESET);
+            turn++;
+          } else {
+            int aiChoice = Utilities.randomRoll();
+            if (aiChoice == 0) {
+              monsterDamage = Actions.attack(monst1.getAtk());
+              char3.setHp(Actions.dealDamage(monsterDamage, char3.getHp(), char3Defense));
+              System.out.println();
+              System.out.println("\n" + GREEN + monst1.getName() + WHITE + " did " + YELLOW
+                  + monsterDamage + WHITE + " damage to each of your team member!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 1) {
+              monst1Defense = monst1.getDef();
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + "is defending!\n" + RESET);
+              turn++;
+            } else if (aiChoice == 2) {
+              healing = Actions.heal(monst1.getMag());
+              Actions.healTargetM(monst1, healing);
+              System.out.println();
+              System.out.println(WHITE + monst1.getName() + " healed for "
+                  + healing + " points!\n" + RESET);
+              turn++;
+            }
+          }
+        }
+        System.out.println(WHITE + "Here's how your party is doing: \n");
+        Utilities.characterInfo(char1);
+        Utilities.characterInfo(char2);
+        Utilities.characterInfo(char3);
+        System.out.println("\nHere's how your enemy is doing: \n");
+        System.out.println();
+        GameMethods.encounterInfo(monst1);
+
+        if (char3.getHp() <= 0) {
+          char3Alive = false;
+          System.out.println(WHITE + "Your party has been defeated!" + RESET);
+        } else if (monst1.getHp() <= 0) {
+          monstAlive = false;
+          System.out.println(WHITE + "\nWell done! " + monst1.getName() + " defeated!" + RESET);
+        } else {
+          System.out.println(WHITE + "Round " + roundCount + " finished!" + RESET);
+          turn = 1;
+        }
+        roundCount++;
       }
-      roundCount++;
     }
+
   }
 }
