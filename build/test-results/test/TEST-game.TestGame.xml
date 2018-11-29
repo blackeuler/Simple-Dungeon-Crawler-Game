@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="game.TestGame" tests="10" skipped="0" failures="0" errors="0" timestamp="2018-11-28T15:48:03" hostname="aldenv107" time="0.011">
+<testsuite name="game.TestGame" tests="10" skipped="0" failures="0" errors="0" timestamp="2018-11-29T19:28:24" hostname="aldenv107" time="0.01">
   <properties/>
-  <testcase name="testHpSetterCharacter" classname="game.TestGame" time="0.008"/>
+  <testcase name="testMonsterAttackRoll" classname="game.TestGame" time="0.005"/>
+  <testcase name="testHpSetterCharacter" classname="game.TestGame" time="0.002"/>
   <testcase name="testHpSetterMonster" classname="game.TestGame" time="0.0"/>
-  <testcase name="testMonsterAttackRoll" classname="game.TestGame" time="0.0"/>
   <testcase name="testCharacterHealMethod" classname="game.TestGame" time="0.0"/>
-  <testcase name="testMonsterHealMethod" classname="game.TestGame" time="0.001"/>
+  <testcase name="testMonsterHealMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testCharacterDealDamageMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testMonsterDealDamageMethod" classname="game.TestGame" time="0.0"/>
   <testcase name="testCharacterGetMagicMethod" classname="game.TestGame" time="0.0"/>
