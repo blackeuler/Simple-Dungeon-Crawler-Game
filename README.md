@@ -6,7 +6,7 @@ start off with 3 unique characters randomly chosen from a list of 10 possible
 characters. Then, you enter the dungeon and fight. Each fight, you are given
 options to either 1.) attack 2.) defend or 3.) heal a designated ally. There
 are a total of 4 opponents. Stay alive as long as possible to beat the final
-raid boss to win the game!
+raid boss and win the game!
 
 ## Sample output of the game
 
@@ -14,7 +14,7 @@ raid boss to win the game!
 
 ## Requirements
 
-In order to run the program, you will need the following apps to be in your disposal:
+In order to run the program, you will need the following tools to be in your disposal (minimum version requirements):
 
 * gradle 4.1
 * java 1.8.0
@@ -27,6 +27,7 @@ You can run the program using the following the commands:
 
 * `gradle build`: create the bytecode and run the test suite
 * `gradle run`: run the Java program in the command-line
+   OR
 * `gradle -q --console plain run`: run the Java program in the command-line
   while silencing all the unnecessary outputs
 
