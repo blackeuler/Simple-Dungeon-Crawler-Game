@@ -14,7 +14,7 @@ raid boss and win the game!
 
 ## Requirements
 
-In order to run the program, you will need the following tools to be in your disposal (minimum version requirements):
+In order to run the program, you will need the following tools (minimum version requirements):
 
 * gradle 4.1
 * java 1.8.0
